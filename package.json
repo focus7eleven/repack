@@ -1,0 +1,23 @@
+{
+  "name": "repack",
+  "version": "1.0.0",
+  "description": "Create an app with react and webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/focus7eleven/repack.git"
+  },
+  "keywords": [
+    "react",
+    "webpack"
+  ],
+  "author": "LifeOfPablo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/focus7eleven/repack/issues"
+  },
+  "homepage": "https://github.com/focus7eleven/repack#readme"
+}
