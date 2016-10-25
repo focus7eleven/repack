@@ -20,6 +20,14 @@ const AppContainer = React.createClass({
     Api.getAlbum(34720827).then((json) => {
       console.log("album: ",json);
     })
+
+    Api.postSearch('kendrick',10,0).then((json) => {
+      console.log("search: ",json);
+    })
+
+    // Api.getDailyRecommend().then((json) => {
+    //   console.log("recommend:",json);
+    // })
   },
 
   render(){
