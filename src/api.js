@@ -44,6 +44,22 @@ const Api = {
     const url = '/api/album/'+id;
     return get(url);
   },
+  getUserPlaylists: (uid,offset,limit) => {
+    const url = '/api/user/playlist?offset='+offset+'&limit='+limit+'&uid='+uid
+    return get(url);
+  },
+  getPlaylist: (id) => {
+    const url = '/api/playlist/detail?id='+id
+    return get(url);
+  },
+  getTrack: (id) => {
+    const url = '/api/song/detail?ids=%5B'+id+'%5d'
+    return get(url);
+  },
+  getLyrics: (id) => {
+    const url = '/api/song/lyric?id='+id+'&lv=-1'
+    return get(url);
+  },
   postSearch: (name,limit,offset) => {
     const url = '/api/search/suggest/web';
     const form = {
@@ -53,7 +69,7 @@ const Api = {
       type:1
     };
     return post(url,form);
-  }
+  },
   // getDailyRecommend: () =>{
   //   const url = '/weapi/v1/discovery/recommend/songs'
   //   const form = {
