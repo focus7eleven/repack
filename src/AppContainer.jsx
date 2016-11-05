@@ -1,14 +1,24 @@
 import React from 'react'
 import Api from './api.js'
+import styles from './AppContainer.scss'
 import NavbarComponent from './containers/NavbarContainer'
+import PlaylistComponent from './containers/PlaylistContainer'
+import PlayerComponent from './containers/PlayerContainer'
+import ListDetailComponent from './containers/ListDetailContainer'
 
 const AppContainer = React.createClass({
   getInitialState(){
     return {
-      userid: 39238941,
-      playlistid: 32242867,
-      trackid: 437245017,
+      listId: 32242867,
+      playlist: {},
+      isReady: false,
     }
+  },
+
+  componentWillMount() {
+    Api.getPlaylist(this.state.listId).then((json) => {
+      this.setState({playlist:json.result,isReady:true});
+    })
   },
 
   // handleSearch(){
@@ -49,11 +59,31 @@ const AppContainer = React.createClass({
   //   // })
   // },
 
+  handleOnChange(id){
+    this.setState({isReady:false})
+    Api.getPlaylist(id).then((json) => {
+      this.setState({listId:id,playlist:json.result,isReady:true});
+    })
+  },
 
   render(){
+    const {listId,isReady,playlist} = this.state;
+
     return (
-      <div>
+      <div className={styles.app}>
+      <div className={styles.container}>
         <NavbarComponent></NavbarComponent>
+        <div className={styles.mainPanel}>
+          <PlaylistComponent onChange={this.handleOnChange}></PlaylistComponent>
+          {
+            isReady ?
+              <ListDetailComponent id={listId} playlist={playlist}></ListDetailComponent>
+              :
+              <div className={styles.blank}></div>
+          }
+        </div>
+        <PlayerComponent></PlayerComponent>
+      </div>
       </div>
     )
   }

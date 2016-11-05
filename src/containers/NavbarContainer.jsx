@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './NavbarContainer.scss'
-import logo from '../../resource/logo.jpeg'
+import logo from '../../resource/logo2.png'
 
 const NavbarComponent = React.createClass({
   render(){
